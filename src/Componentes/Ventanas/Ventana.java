@@ -46,12 +46,14 @@ public class Ventana {
         //Establecer que sucedera cuando se cierre
             A.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);         
         
-        //Establecer Tipo de Ventana
-            //A.setType(Window.Type.UTILITY);
+       //EVENTOS
+            Eventos(A);
             
+        //Establecer Tipo de Ventana
+            //A.setType(Window.Type.UTILITY);     
             
         //Establecer el Estado inicial de la Ventana
-            A.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            //A.setExtendedState(JFrame.MAXIMIZED_BOTH);
             
         //Hacerla Visible    
             A.setVisible(true);
@@ -103,9 +105,12 @@ public class Ventana {
             System.out.println("Cant. Componentes: " + A.getComponentCount());
             
         //Es visible ?
-            System.out.printf("*Es visible: " + A.isVisible());
+            System.out.println("*Es visible: " + A.isVisible());
+            
+        System.out.println("--------------------------------------------------------------------------------------");
     }
     
+    //Cambiar Icono superior
     private static void cambiarIcono(JFrame A){
     
         File ruta = new File("Iconos\\24x24\\java.png");
@@ -122,6 +127,16 @@ public class Ventana {
 
             ex.getMessage();
         }  
+    }
+    
+    private static void Eventos(JFrame A){
+        
+
+        
+        //Eventos de Ventana    
+            //Eventos de Foco (Ventana)
+                //A.addWindowFocusListener();
+    
     }
     
     

@@ -6,101 +6,112 @@ import javax.swing.event.*;
 import java.awt.event.*;
 
 public class Oyentes {
-    
-    
-    
-    
-    
+
     FocusAdapter Foco = new FocusAdapter(){};
     
-    //EVENTOS DE FOCO
+    //EVENTOS DE FOCO COMPONENTES ----------------------------------------------------------------------------------- 
+    //Objetos que implementan la Interfaz: FocusListener
+    
+    protected FocusListener FL = new FocusListener(){
+
+        @Override
+        public void focusGained(FocusEvent e){}
+        //Se ejecuta Cuando el Componente gana el Foco
+
+        @Override
+        public void focusLost(FocusEvent e){}
+        //Se ejecuta Cuando el Componente pierde el Foco
+    };
+    
+    //EVENTOS DE TECLADO --------------------------------------------------------------------------------------------
+    //Objetos que implementan la Interfaz: KeyListener
+    
+    protected KeyListener KL = new KeyListener() {
+
+        @Override
+        public void keyTyped(KeyEvent e){}
+
+        @Override
+        public void keyPressed(KeyEvent e){}
+        //Se ejecuta mientras presinas una Tecla
+
+        @Override
+        public void keyReleased(KeyEvent e){}
+        //Se ejecuta cuando dejas de presionar una Tecla
+    };
+
+    //CLASE ADAPTADORA
+        private KeyAdapter Teclado = new KeyAdapter(){};
+    
+            
+    //EVENTOS DE MOUSE ---------------------------------------------------------------------------------------------- 
+    //Objetos que implementan la Interfaz: MouseListener - MouseMotionListener - MouseWheelListener
         
-        FocusListener FL = new FocusListener(){
+    protected MouseListener ML = new MouseListener(){
+
+        @Override
+        public void mouseClicked(MouseEvent e){}
+
+        @Override
+        public void mousePressed(MouseEvent e){}
+        //Mientras presionemos un Boton
+
+        @Override
+        public void mouseReleased(MouseEvent e){}
+        //Cuando dejamos de presionar un Boton
+
+        @Override
+        public void mouseEntered(MouseEvent e){}
+        //Cuando el Cursor esta sobre el Componente
+
+        @Override
+        public void mouseExited(MouseEvent e){}
+        //Cuando el Cursor sale del Componente
+    };
+        
+        protected MouseMotionListener MML = new MouseMotionListener(){
             
             @Override
-            public void focusGained(FocusEvent fe) {}
+            public void mouseDragged(MouseEvent e){}
+            //Cuando mantenemos presinado un Boton y nos movemos sobre el Componente
 
             @Override
-            public void focusLost(FocusEvent fe) {}
+            public void mouseMoved(MouseEvent e){}
+            //Cuando movemos el Cursor sobre el Componente
         };
     
-    //EVENTOS DE TECLADO
-    
-        KeyListener KL = new KeyListener() {
+        protected MouseWheelListener MWL = new MouseWheelListener(){
             
             @Override
-            public void keyTyped(KeyEvent ke){}
-
-            @Override
-            public void keyPressed(KeyEvent ke) {}
-
-            @Override
-            public void keyReleased(KeyEvent ke) {}
+            public void mouseWheelMoved(MouseWheelEvent e){}
+            //Cuando hacemos girar la Ruedita del Mouse
         };
-        
+    
         //CLASE ADAPTADORA
-            KeyAdapter Teclado = new KeyAdapter(){};
-        
-    //EVENTOS DE MOUSE
-        
-        MouseListener ML = new MouseListener(){
-            
-            @Override
-            public void mouseClicked(MouseEvent me){}
-
-            @Override
-            public void mousePressed(MouseEvent me){}
-
-            @Override
-            public void mouseReleased(MouseEvent me){}
-
-            @Override
-            public void mouseEntered(MouseEvent me){}
-
-            @Override
-            public void mouseExited(MouseEvent me){}
-        };
-        
-        MouseMotionListener MML = new MouseMotionListener(){
-            
-            @Override
-            public void mouseDragged(MouseEvent me){}
-
-            @Override
-            public void mouseMoved(MouseEvent me){}
-        };
-    
-        MouseWheelListener MWL = new MouseWheelListener(){
-            
-            @Override
-            public void mouseWheelMoved(MouseWheelEvent mwe){}
-        };
-    
-        //CLASE ADAPTADORA
-            MouseAdapter Mouse = new MouseAdapter(){};
+            private MouseAdapter Mouse = new MouseAdapter(){};
     
    
     //AbstractButton ------------------------------------------------------------------------------------------------
-        ActionListener AL = new ActionListener(){
+        protected ActionListener AL = new ActionListener(){
 
             @Override
             public void actionPerformed(ActionEvent e){}
         };
 
-        ChangeListener CL = new ChangeListener(){
+        protected ChangeListener CL = new ChangeListener(){
 
             @Override
-            public void stateChanged(ChangeEvent ce){}
+            public void stateChanged(ChangeEvent e){}
         };
 
-        ItemListener IL = new ItemListener(){
+        protected ItemListener IL = new ItemListener(){
 
             @Override
-            public void itemStateChanged(ItemEvent ie){}
+            public void itemStateChanged(ItemEvent e){}
         };
     
     //JPopupMenu ----------------------------------------------------------------------------------------------------
-        MenuKeyListener MKL = new MenuKeyListener(){
+        protected MenuKeyListener MKL = new MenuKeyListener(){
             @Override
             public void menuKeyTyped(MenuKeyEvent mke){}
 
@@ -111,7 +122,7 @@ public class Oyentes {
             public void menuKeyReleased(MenuKeyEvent mke){}
         };
 
-        PopupMenuListener PML = new PopupMenuListener(){
+        protected PopupMenuListener PML = new PopupMenuListener(){
 
             @Override
             public void popupMenuWillBecomeVisible(PopupMenuEvent pme){}
@@ -124,7 +135,7 @@ public class Oyentes {
         };
     
     // ------------------------------------------------------------------------------------------------
-        DocumentListener DL = new DocumentListener(){
+        protected DocumentListener DL = new DocumentListener(){
 
             @Override
             public void insertUpdate(DocumentEvent de){}
@@ -139,7 +150,7 @@ public class Oyentes {
     
     //EVENTOS DE VENTANAS ------------------------------------------------------------------------------------------
     
-        WindowListener WL = new WindowListener(){
+        protected WindowListener WL = new WindowListener(){
             
             @Override
             public void windowOpened(WindowEvent we){}
@@ -163,13 +174,13 @@ public class Oyentes {
             public void windowDeactivated(WindowEvent we){}
         };
         
-        WindowStateListener WSL = new WindowStateListener(){
+        protected WindowStateListener WSL = new WindowStateListener(){
             
             @Override
             public void windowStateChanged(WindowEvent we){}
         };
         
-        WindowFocusListener WFL = new WindowFocusListener(){
+        protected WindowFocusListener WFL = new WindowFocusListener(){
             
             @Override
             public void windowGainedFocus(WindowEvent we){}
