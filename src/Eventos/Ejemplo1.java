@@ -26,6 +26,7 @@ public class Ejemplo1 {
     }
     
     static TecladoMouseFoco Oyente = new TecladoMouseFoco();
+    static Ventanas OyenteVentanas = new Ventanas();
     
     //VENTANA 1: EVENTOS DE TECLADO --------------------------------------------------------------------------------    
     private static class Ventana1 extends JFrame {
@@ -61,6 +62,12 @@ public class Ejemplo1 {
             
             this.add(boton);
 
+            //EVENTOS VENTANAS
+            this.addWindowListener(OyenteVentanas.eventosVentanas);
+            this.addWindowFocusListener(OyenteVentanas.FocoVentanas);
+            this.addWindowStateListener(OyenteVentanas.estadoVentanas);
+            
+            
             this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
             this.setVisible(true);
         }
@@ -72,7 +79,7 @@ public class Ejemplo1 {
 
         public Ventana2(){
             
-            this.setName("Ventana 1"); this.setTitle( getName() );
+            this.setName("Ventana 2"); this.setTitle( getName() );
             
             this.setSize(400, 400);
             
@@ -105,6 +112,12 @@ public class Ejemplo1 {
             
             this.add(boton);
             
+            //EVENTOS VENTANAS
+            this.addWindowListener(OyenteVentanas.eventosVentanas);
+            this.addWindowFocusListener(OyenteVentanas.FocoVentanas);
+            this.addWindowStateListener(OyenteVentanas.estadoVentanas);
+            
+            
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.setVisible(true);
         } 
@@ -116,7 +129,7 @@ public class Ejemplo1 {
 
         public Ventana3(){
             
-            this.setName("Ventana 1"); this.setTitle( getName() );
+            this.setName("Ventana 3"); this.setTitle( getName() );
             
             this.setSize(400, 400);
             
@@ -159,7 +172,13 @@ public class Ejemplo1 {
             this.add(cuadro1);
             this.add(cuadro2);
 
-            this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+            //EVENTOS VENTANAS
+            this.addWindowListener(OyenteVentanas.eventosVentanas);
+            this.addWindowFocusListener(OyenteVentanas.FocoVentanas);
+            this.addWindowStateListener(OyenteVentanas.estadoVentanas);
+            
+            
+            this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             this.setVisible(true);
         }
      //Fin de Clase Ventana3
