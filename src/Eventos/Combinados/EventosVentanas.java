@@ -9,7 +9,7 @@ import java.awt.event.WindowStateListener;
 import javax.swing.JFrame;
 
 
-public class Ventanas{
+public class EventosVentanas{
     
     Constantes W = new Constantes();
     
@@ -28,7 +28,7 @@ public class Ventanas{
             
            JFrame origen = (JFrame)e.getSource();
             
-           origen.setTitle(origen.getName());
+           origen.setTitle(origen.getName());  
         }
     };
     

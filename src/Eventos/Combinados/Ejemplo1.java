@@ -25,8 +25,8 @@ public class Ejemplo1 {
      //Fin de Programa
     }
     
-    static TecladoMouseFoco Oyente = new TecladoMouseFoco();
-    static Ventanas OyenteVentanas = new Ventanas();
+    static EventosTecladoMouseFoco Oyente = new EventosTecladoMouseFoco();
+    static EventosVentanas OyenteVentanas = new EventosVentanas();
     
     //VENTANA 1: EVENTOS DE TECLADO --------------------------------------------------------------------------------    
     private static class Ventana1 extends JFrame {

@@ -1,11 +1,10 @@
 
-package Java_Swing.Componentes.Texto;
+package Componentes.Texto;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.text.Document;
+import javax.swing.event.*;
+import javax.swing.text.*;
 
 public class Area_de_Texto {
 
@@ -37,9 +36,7 @@ public class Area_de_Texto {
     
     //PANEL ---------------------------------------------------------------------------------------------------------
     private static class Panel extends JPanel{
-        
-        
-        
+
         public Panel(){
             
             //Area de Texto simple
@@ -89,10 +86,22 @@ public class Area_de_Texto {
         //Establecer Color del Texto Seleccionado    
             A.setSelectedTextColor(Color.yellow);
             
-       //Establecer Fuente
+        //Establecer Fuente
             A.setFont(new Font("Consolas", Font.PLAIN, 16));
+        
+        //Establecer si se puede enfocar o no    
+            //A.setFocusable(false);
             
-            
+        //Establecer Margen
+           int superior = 20, inferior = 50, izquierda = 20, derecha = 50;
+           
+           A.setMargin(new Insets(superior, izquierda, inferior, derecha));
+           
+        //Establecer si se puede Editar
+           
+           //A.setEditable(false);//No se puede Editar, pero si enfocar y escuchar eventos
+        
+    
         //OBTENER -------------------------------------------------------------
             Obtener(A);
        
@@ -103,36 +112,7 @@ public class Area_de_Texto {
         return(A);
     }
     
-    //EVENTOS
-    private static void Eventos(JTextArea A){
-        
-        Document doc = A.getDocument();
-    
-        doc.addDocumentListener(new DocumentListener(){
-            
-            @Override
-            public void insertUpdate(DocumentEvent de){
-            
-                System.out.println("Estas Ingresando Texto...");
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent de){
-               
-                System.out.println("Estas Borrando Texto...");
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent de){
-                
-                System.out.println("Se ha modificado el Texto");    
-            }
-            
-         //Fin de Clase Anomina   
-        });
-    }
-    
-    //OBTENER
+    //OBTENER -------------------------------------------------------------------------------------------------------
     private static void Obtener(JTextArea A){
         
         //Esta activado ?
@@ -171,8 +151,49 @@ public class Area_de_Texto {
         //Obtener Mensaje emergente
             System.out.println("Mensaje Emergente: " + A.getToolTipText() );
             
+        //Se puede enfocar ?
+        System.out.println("Se puede enfocar: " + A.isFocusable());
+        
+        //Obtener Margen
+            Insets margen = A.getMargin();
+            System.out.println("Margen: " + margen);
+        
+        //Se puede Editar
+            System.out.println("Se puede editar: " + A.isEditable());
+        
+        
+            
             
         System.out.println("-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-");
+    }
+    
+    //EVENTOS
+    private static void Eventos(JTextArea A){
+        
+        Document doc = A.getDocument();
+    
+        doc.addDocumentListener(new DocumentListener(){
+            
+            @Override
+            public void insertUpdate(DocumentEvent de){
+            
+                System.out.println("Estas Ingresando Texto...");
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent de){
+               
+                System.out.println("Estas Borrando Texto...");
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent de){
+                
+                System.out.println("Se ha modificado el Texto");    
+            }
+            
+         //Fin de Clase Anomina   
+        });
     }
 
  //Fin de Clase  

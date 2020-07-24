@@ -1,5 +1,5 @@
 
-package Java_Swing.Componentes.Texto;
+package Componentes.Texto;
 
 import java.awt.*;
 import javax.swing.*;
@@ -85,6 +85,17 @@ public class Cuadro_de_Texto_Contraseña {
         //Cambia la Alineacion del Texto    
             A.setHorizontalAlignment(JTextField.CENTER);
         
+        //Establecer si se puede enfocar o no    
+            A.setFocusable(false);
+            
+        //Establecer Margen
+           int superior = 0, inferior = 0, izquierda = 20, derecha = 50;
+           
+           A.setMargin(new Insets(superior, izquierda, inferior, derecha));
+           
+        //Establecer si se puede Editar
+        
+           //A.setEditable(false);//No se puede Editar, pero si enfocar y escuchar eventos    
         
         //OBTENER ----------------------------------------------------------
             Obtener(A);
@@ -96,36 +107,7 @@ public class Cuadro_de_Texto_Contraseña {
         return(A);
     }
 
-    //EVENTOS
-    private static void Eventos(JPasswordField A){
-        
-        Document doc = A.getDocument();
-    
-        doc.addDocumentListener(new DocumentListener(){
-            
-            @Override
-            public void insertUpdate(DocumentEvent de){
-            
-                System.out.println("Estas Ingresando Texto...");
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent de){
-               
-                System.out.println("Estas Borrando Texto...");
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent de){
-                
-                System.out.println("Se ha modificado el Texto");    
-            }
-            
-         //Fin de Clase Anomina   
-        });
-    }
-    
-    //OBTENER
+    //OBTENER ------------------------------------------------------------------------------------------------------
     private static void Obtener(JPasswordField A){
         
         //Esta activado ?
@@ -161,8 +143,48 @@ public class Cuadro_de_Texto_Contraseña {
         //Obtener Mensaje emergente
             System.out.println("Mensaje Emergente: " + A.getToolTipText() );
             
+        //Se puede enfocar ?
+            System.out.println("Se puede enfocar: " + A.isFocusable());
+        
+        //Obtener Margen
+            Insets margen = A.getMargin();
+            System.out.println("Margen: " + margen);
+        
+        //Se puede Editar
+            System.out.println("Se puede editar: " + A.isEditable()); 
+            
             
         System.out.println("-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-");
+    }
+    
+    
+    //EVENTOS
+    private static void Eventos(JPasswordField A){
+        
+        Document doc = A.getDocument();
+    
+        doc.addDocumentListener(new DocumentListener(){
+            
+            @Override
+            public void insertUpdate(DocumentEvent de){
+            
+                System.out.println("Estas Ingresando Texto...");
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent de){
+               
+                System.out.println("Estas Borrando Texto...");
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent de){
+                
+                System.out.println("Se ha modificado el Texto");    
+            }
+            
+         //Fin de Clase Anomina   
+        });
     }
     
  //Fin de Clase  

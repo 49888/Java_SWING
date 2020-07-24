@@ -8,12 +8,12 @@ import javax.swing.event.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class TecladoMouseFoco {
+public class EventosTecladoMouseFoco {
     
     Constantes W = new Constantes();
     
     //EVENTOS DE FOCO COMPONENTES --------------------------------------------------------------------------------------- 
-    FocusListener Foco = new FocusListener(){
+    public FocusListener Foco = new FocusListener(){
 
         @Override
         public void focusGained(FocusEvent e){
@@ -34,7 +34,7 @@ public class TecladoMouseFoco {
     
     //EVENTOS DE TECLADO -----------------------------------------------------------------------------------------------
     
-    KeyListener EventosTeclado = new KeyListener() {
+    public KeyListener EventosTeclado = new KeyListener() {
             
         @Override
         public void keyTyped(KeyEvent e){
@@ -59,7 +59,7 @@ public class TecladoMouseFoco {
         private KeyAdapter Teclado = new KeyAdapter(){};
         
     //EVENTOS DE MOUSE -----------------------------------------------------------------------------------------------------
-    MouseListener Mouse = new MouseListener(){
+    public MouseListener Mouse = new MouseListener(){
             
         @Override
         public void mouseClicked(MouseEvent e){
@@ -107,7 +107,7 @@ public class TecladoMouseFoco {
      //Fin Clase anonima MouseListener
     };
         
-    MouseMotionListener MouseMotion = new MouseMotionListener(){
+    public MouseMotionListener MouseMotion = new MouseMotionListener(){
             
         @Override
         public void mouseDragged(MouseEvent e){
@@ -138,7 +138,7 @@ public class TecladoMouseFoco {
         }
     };
     
-    MouseWheelListener MouseRuedita = new MouseWheelListener(){
+    public MouseWheelListener MouseRuedita = new MouseWheelListener(){
             
         @Override
         public void mouseWheelMoved(MouseWheelEvent e){

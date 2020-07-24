@@ -1,15 +1,13 @@
-
 package Componentes.Texto;
 
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.ActionEvent;
 import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.text.Document;
+import javax.swing.event.*;
+import javax.swing.plaf.basic.BasicArrowButton;
+import javax.swing.text.*;
 
-public class Cuadro_de_Texto {
+public class Area_de_Edicion {
 
     public static void main(String[] args) {
         
@@ -23,13 +21,18 @@ public class Cuadro_de_Texto {
     
         public Ventana(){
             
-            this.setSize(400, 400);
+            this.setSize(600, 400);
             this.setLocationRelativeTo(null);
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            
+
             //Añadimos el Panel
                 Panel panel = new Panel();
-                this.add(panel);
+                
+                //this.add(panel, BorderLayout.CENTER);
+ 
+                this.add(areaTexto(), BorderLayout.CENTER);
+
+                this.add(Editor.getBarraOpciones(), BorderLayout.NORTH);
                 
             this.setVisible(true);
         }
@@ -39,23 +42,32 @@ public class Cuadro_de_Texto {
     
     //PANEL ---------------------------------------------------------------------------------------------------------
     private static class Panel extends JPanel{
-        
+
         public Panel(){
             
-            this.add(cuadroTexto());
+            //Area de Texto simple
+
+            this.add(areaTexto());
+            
+            //Area de Texto con Scroll
+                JScrollPane panelScroll = new JScrollPane(areaTexto());
+
+                this.add(panelScroll);//*/
         }
  
      //Fin de Clase Panel
     }
-
     
-    //CUADRO DE TEXTO -----------------------------------------------------------------------------------------------
-    private static JTextField cuadroTexto(){
-    
-        JTextField A = new JTextField();
+    //AREA DE TEXTO -------------------------------------------------------------------------------------------------
+    private static JEditorPane areaTexto(){
+        
+        JEditorPane A = new JEditorPane();
+        
+        //Definir Editor   
+            A.setEditorKit(new StyledEditorKit());
         
         //Activar / Desactivar 
-            //A.setEnabled(false);
+            //A.setEnabled(false); 
         
         //Establecer nombre
             A.setName("Cuadro de Texto");
@@ -63,58 +75,64 @@ public class Cuadro_de_Texto {
         //Establecer Texto
             A.setText("Escribe aqui...");
             
-        //Establecer Columnas
-            A.setColumns(30);
+        //Mensaje Emergente
+            A.setToolTipText("Esta es una Area de Texto");
         
+        //Añadir texto al final
+            //A.append("Esto va al final");
+        
+        //Establecer Lineas y Columnas
+            //A.setRows(7); A.setColumns(20);
+            
+        //Saltos de linea automaticos (No crece a lo largo)
+            //A.setLineWrap(true);
+            
         //Establecer Color
             A.setBackground(Color.LIGHT_GRAY);
         
         //Estblecer Color de la Letra
-            A.setForeground(Color.BLUE);
+            //A.setForeground(Color.BLUE);
             
-        //Mensaje Emergente
-            A.setToolTipText("Introduce Texto...");
-        
-        //Establecer Fuente
-            A.setFont(new Font("Consolas", Font.PLAIN, 12));
-    
-        //Cambia la Alineacion del Texto    
-            //A.setHorizontalAlignment(JTextField.CENTER);
-        
         //Establecer Color del Texto Seleccionado    
             A.setSelectedTextColor(Color.yellow);
+            
+        //Establecer Fuente
+            //A.setFont(new Font("Consolas", Font.PLAIN, 16));
         
-        //Establecer Color de Seleccion    
-            A.setSelectionColor(Color.RED);
-        
+
         //Establecer si se puede enfocar o no    
-            A.setFocusable(false);
+            //A.setFocusable(false);
             
         //Establecer Margen
-           int superior = 0, inferior = 0, izquierda = 20, derecha = 50;
+           int superior = 20, inferior = 50, izquierda = 20, derecha = 50;
            
-           A.setMargin(new Insets(superior, izquierda, inferior, derecha));
+           //A.setMargin(new Insets(superior, izquierda, inferior, derecha));
            
-        //Establecer si se puede Editar
+        //Establecer si se puede Editar    
+           //A.setEditable(false);    
        
-           //A.setEditable(false);//No se puede Editar, pero si enfocar y escuchar eventos   
-            
+    
         
-        //OBTENER -------------------------------------------------------
+        
+           
+        //OBTENER -------------------------------------------------------------
             Obtener(A);
-        
+       
         //EVENTOS: con DocumentListener ---------------------------------------
             Eventos(A);
         
-            
+        
         return(A);
     }
     
     //OBTENER -------------------------------------------------------------------------------------------------------
-    private static void Obtener(JTextField A){
+    private static void Obtener(JEditorPane A){
         
         //Esta activado ?
             System.out.println("Activado: " + A.isEnabled() );
+           
+        //Obtener Editor
+            System.out.println(A.getEditorKit());
         
         //Obtener Nombre
             System.out.println("Nombre: " + A.getName() );
@@ -122,8 +140,8 @@ public class Cuadro_de_Texto {
         //Obtener Texto
             System.out.println("Texto:\n"  + A.getText() + "\n-----------");
             
-        //Obtener Columnas
-            System.out.println("Columnas:: " + A.getColumns());
+        //Obtener Lineas y Columnas
+            //System.out.println("Filas: " + A.getRows()+ " Columnas:: " + A.getColumns());
         
         //Obtener Color de la Letra
             System.out.println("Color Letra: " + A.getForeground() );
@@ -134,14 +152,17 @@ public class Cuadro_de_Texto {
         //Obtener Color del Texto selecionado
             System.out.println("Color Seleccion: " + A.getSelectionColor() );
             
+        //Establecer Color de Seleccion    
+            A.setSelectionColor(Color.RED);
+            
         //Obtener Color de Fondo
             System.out.println("Color fondo: " + A.getBackground() );
-      
+            
+        //Tiene saltos de lineas automaticos ?
+            //System.out.println("Saltos de linea automaticos: " + A.getLineWrap() );
+            
         //Obtener la Fuente
             System.out.println("Fuente: " + A.getFont() );
-            
-        //Obtener Alineacion
-            System.out.println("Alineacion: " + A.getHorizontalAlignment());
             
         //Obtener Mensaje emergente
             System.out.println("Mensaje Emergente: " + A.getToolTipText() );
@@ -154,14 +175,18 @@ public class Cuadro_de_Texto {
             System.out.println("Margen: " + margen);
         
         //Se puede Editar
-            System.out.println("Se puede editar: " + A.isEditable()); 
+            System.out.println("Se puede editar: " + A.isEditable());
+            
+        
+        //----------------------------------------------------------------------------------------------------
+        
             
             
         System.out.println("-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-");
     }
     
     //EVENTOS
-    private static void Eventos(JTextField A){
+    private static void Eventos(JEditorPane A){
         
         Document doc = A.getDocument();
     
@@ -188,6 +213,6 @@ public class Cuadro_de_Texto {
          //Fin de Clase Anomina   
         });
     }
-    
+
  //Fin de Clase  
 }
