@@ -27,8 +27,6 @@ public class Barras_de_Menus {
             JMenuBar barra = BarraMenus();
             this.add(barra, BorderLayout.NORTH);
             
-
-            
             this.setVisible(true);
         }
         

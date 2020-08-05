@@ -124,6 +124,7 @@ public class Editor {
         menu.add(A);
     }
     
+    //TAMAÑO
     private static void añadirTamaño(JMenu menu, int size){
     
         String nombre = Integer.toString(size);
@@ -143,9 +144,9 @@ public class Editor {
         JMenuItem A = new JMenuItem("Copiar", new ImageIcon("Iconos\\24x24\\copiar.png"));
         JMenuItem B = new JMenuItem("Cortar", new ImageIcon("Iconos\\24x24\\cortar.png"));
         JMenuItem C = new JMenuItem("Pegar", new ImageIcon("Iconos\\24x24\\pegar.png"));
-        JMenuItem D = new JMenuItem("Pitido");
-        JMenuItem E = new JMenuItem("Salto");
-        JMenuItem F = new JMenuItem("Tab");
+        JMenuItem D = new JMenuItem("Pitido", new ImageIcon("Iconos\\24x24\\sonido.png"));
+        JMenuItem E = new JMenuItem("Salto", new ImageIcon("Iconos\\16x16\\salto de linea.png"));
+        JMenuItem F = new JMenuItem("Tab", new ImageIcon("Iconos\\24x24\\tab.png"));
 
             //Heredados de DefaultEditorKit
             Action copiar = new StyledEditorKit.CopyAction();

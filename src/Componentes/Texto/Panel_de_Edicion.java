@@ -4,10 +4,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 import javax.swing.event.*;
-import javax.swing.plaf.basic.BasicArrowButton;
 import javax.swing.text.*;
 
-public class Area_de_Edicion {
+public class Panel_de_Edicion {
 
     public static void main(String[] args) {
         
@@ -21,8 +20,7 @@ public class Area_de_Edicion {
     
         public Ventana(){
             
-            this.setSize(600, 400);
-            this.setLocationRelativeTo(null);
+            this.setSize(600, 400); this.setLocationRelativeTo(null);
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             //Añadimos el Panel
@@ -45,14 +43,14 @@ public class Area_de_Edicion {
 
         public Panel(){
             
-            //Area de Texto simple
-
+            /*//Area de Texto simple
             this.add(areaTexto());
             
             //Area de Texto con Scroll
                 JScrollPane panelScroll = new JScrollPane(areaTexto());
 
-                this.add(panelScroll);//*/
+                this.add(panelScroll);
+            //*/    
         }
  
      //Fin de Clase Panel
@@ -62,12 +60,12 @@ public class Area_de_Edicion {
     private static JEditorPane areaTexto(){
         
         JEditorPane A = new JEditorPane();
-        
+
+        //Activar / Desactivar 
+            //A.setEnabled(false);
+            
         //Definir Editor   
             A.setEditorKit(new StyledEditorKit());
-        
-        //Activar / Desactivar 
-            //A.setEnabled(false); 
         
         //Establecer nombre
             A.setName("Cuadro de Texto");
@@ -84,22 +82,30 @@ public class Area_de_Edicion {
         //Establecer Lineas y Columnas
             //A.setRows(7); A.setColumns(20);
             
-        //Saltos de linea automaticos (No crece a lo largo)
-            //A.setLineWrap(true);
             
-        //Establecer Color
+        //Establecer Color de Fondo
             A.setBackground(Color.LIGHT_GRAY);
         
         //Estblecer Color de la Letra
             //A.setForeground(Color.BLUE);
             
+        //Establecer Fuente
+            //A.setFont(new Font("Consolas", Font.PLAIN, 16));
+            
         //Establecer Color del Texto Seleccionado    
             A.setSelectedTextColor(Color.yellow);
             
-        //Establecer Fuente
-            //A.setFont(new Font("Consolas", Font.PLAIN, 16));
+        //Establecer Color de Seleccion    
+            A.setSelectionColor(Color.RED);
         
-
+        //Establecer Color del Caret(Cursor - Promt)
+            A.setCaretColor(Color.BLUE);
+            
+        //Establecer posicion del Caret (solo si hay texto)
+            int pos = 3, fin = A.getText().length();
+            A.setCaretPosition(fin);
+            
+        
         //Establecer si se puede enfocar o no    
             //A.setFocusable(false);
             
@@ -111,16 +117,15 @@ public class Area_de_Edicion {
         //Establecer si se puede Editar    
            //A.setEditable(false);    
        
-    
-        
-        
-           
+ 
         //OBTENER -------------------------------------------------------------
             Obtener(A);
        
         //EVENTOS: con DocumentListener ---------------------------------------
             Eventos(A);
-        
+            
+        //Establecer Visibilidad
+            //A.setVisible(false);
         
         return(A);
     }
@@ -130,7 +135,7 @@ public class Area_de_Edicion {
         
         //Esta activado ?
             System.out.println("Activado: " + A.isEnabled() );
-           
+   
         //Obtener Editor
             System.out.println(A.getEditorKit());
         
@@ -140,48 +145,48 @@ public class Area_de_Edicion {
         //Obtener Texto
             System.out.println("Texto:\n"  + A.getText() + "\n-----------");
             
+        //Obtener Mensaje emergente
+            System.out.println("Mensaje Emergente: " + A.getToolTipText() );
+            
         //Obtener Lineas y Columnas
             //System.out.println("Filas: " + A.getRows()+ " Columnas:: " + A.getColumns());
         
+        //Obtener Color de Fondo
+            System.out.println("Color fondo: " + A.getBackground() );
+            
         //Obtener Color de la Letra
             System.out.println("Color Letra: " + A.getForeground() );
+        
+        //Obtener la Fuente
+            System.out.println("Fuente: " + A.getFont() );
+         
             
         //Obtener Color del Texto selecionado
             System.out.println("Color Texto seleccionado: " + A.getSelectedTextColor() );
             
-        //Obtener Color del Texto selecionado
+        //Obtener Color de Seleccion
             System.out.println("Color Seleccion: " + A.getSelectionColor() );
             
-        //Establecer Color de Seleccion    
-            A.setSelectionColor(Color.RED);
+        //Obtener Color del Caret (Cursor - Promt)
+            System.out.println("Color cursor: " + A.getCaretColor());
+
+        //Obtener posicion del Caret
+            System.out.println("Posicion Caret: " + A.getCaretPosition());
+         
             
-        //Obtener Color de Fondo
-            System.out.println("Color fondo: " + A.getBackground() );
-            
-        //Tiene saltos de lineas automaticos ?
-            //System.out.println("Saltos de linea automaticos: " + A.getLineWrap() );
-            
-        //Obtener la Fuente
-            System.out.println("Fuente: " + A.getFont() );
-            
-        //Obtener Mensaje emergente
-            System.out.println("Mensaje Emergente: " + A.getToolTipText() );
-            
-        //Se puede enfocar ?
-            System.out.println("Se puede enfocar: " + A.isFocusable());
-        
         //Obtener Margen
             Insets margen = A.getMargin();
             System.out.println("Margen: " + margen);
-        
+            
+        //Se puede enfocar ?
+            System.out.println("Se puede enfocar: " + A.isFocusable());
+
         //Se puede Editar
             System.out.println("Se puede editar: " + A.isEditable());
             
-        
-        //----------------------------------------------------------------------------------------------------
-        
-            
-            
+        //Es visible ?
+           System.out.println("Es visible: " + A.isVisible());
+           
         System.out.println("-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-");
     }
     
@@ -212,6 +217,22 @@ public class Area_de_Edicion {
             
          //Fin de Clase Anomina   
         });
+        
+        A.addCaretListener(new CaretListener(){
+            
+            @Override
+            public void caretUpdate(CaretEvent ce) {
+                System.out.println("Cambio la seleccion...");
+                
+                //Obtener Texto Selecionado
+                    //System.out.println(" Seleccion: " + A.getSelectedText());
+                    
+                //Obtener posicion de Caret (Cursor - Promt)
+                    System.out.println("Posicion cursor: " + A.getCaretPosition());
+            }
+            
+         //Fin de Clase Anonima
+        });//*/
     }
 
  //Fin de Clase  

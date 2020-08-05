@@ -1,13 +1,10 @@
 
 package Principal;
 
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.event.MouseEvent;
-import javax.swing.BoxLayout;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JToolBar;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
 
 public class Constantes {
     
@@ -43,8 +40,9 @@ public class Constantes {
         return("");
     }
     
-    //VENTANAS -------------------------------------------------------------------------------------------------------
-    //Estado Inicial de la Ventana
+    
+    //VENTANAS (JFrame) -------------------------------------------------------------------------------------------------------
+    //Estado Inicial de la Ventana (getExtendState)
     public String estadoVentana(int A){
 
         switch(A){
@@ -64,7 +62,8 @@ public class Constantes {
         return("");
     }
     
-    //Que hace una Ventana cuando se Cierra
+    
+    //Que hace una Ventana cuando se Cierra (gertDefaultCloseOperation)
     public String cierreVentana(int A){
 
         switch(A){
@@ -117,7 +116,7 @@ public class Constantes {
         return("");
     }
     
-    //Alineacion del FlowLayout
+    //Alineacion del BoxLayout
     public String boxAxis(int A){
 
         switch(A){
@@ -142,10 +141,7 @@ public class Constantes {
     }
     
 
-    
-    
-    
-    //
+    //Estilo de la Fuente (Font) 
     public String estiloFuente(int A){
 
         switch(A){
@@ -165,8 +161,28 @@ public class Constantes {
         return("");
     }
     
+    //Alineacion de un Cuadro de Texto (JTextField)
+    public String alignJTextField(int A){
+
+        switch(A){
+
+            case JTextField.CENTER:
+
+                return("Centrado"); 
+
+            case JTextField.LEFT:
+
+                return("Izquierda");
+
+            case JTextField.RIGHT:
+
+                return("Derecha");
+        }
+        return("");
+    }
     
-    //JOptionPane - showConfirmDialog
+    
+    //Opciones showConfirmDialog (JOptionPane)
     public String showConfirm(int A){
 
         switch(A){
@@ -191,7 +207,7 @@ public class Constantes {
     }
     
     
-    //Barras de Herramientas
+    //Orientacion barra de herramientas (JToolBar) 
     public String barOrientacion(int A){
     
         switch(A){
@@ -203,6 +219,23 @@ public class Constantes {
             case JToolBar.VERTICAL://1
 
                 return("Vertical");
+        }
+        return("");
+    }
+    
+    
+    //Estado de Items (Interfaz ItemListener) 
+    public static String estadoItem(int A){
+        
+        switch(A){
+        
+            case ItemEvent.DESELECTED:
+                
+                return("Deselecionado");
+                
+            case ItemEvent.SELECTED:
+                
+                return("Selecionado");
         }
         return("");
     }
